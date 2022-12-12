@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 19:42:03
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:13:55
+ # @LastEditTime: 2022-12-12 20:22:24
  # @FilePath: /newifi3-nezha/down.sh
 ### 
 #!/bin/bash
@@ -36,11 +36,19 @@ chmod_nezha(){
 
     chmod +x /tmp/nezha-agent
 }
-# enbable nezha-agent
+# enable nezha-agent
 start_nezha()
 {
     /etc/init.d/nezha-service enable && \
-    /etc/init.d/nezha-service start
+    /etc/init.d/nezha-service start 
+    systemctl status nezha-service | grep "Active: active (running)" 
+    if [ $? -eq 0 ]; then
+        echo "nezha-agent start success!"
+    else
+        echo "nezha-agent start failed!"
+        exit 1
+    fi
+
 }
 # main function
 main(){
@@ -55,9 +63,7 @@ main(){
     sleep 1
     echo "start nezha-agent..."
     start_nezha()
-    sleep 1
-    echo "nezha-agent start success!"
-    sleep 1
+    sleep 2
     echo "Enjoy it!"
 }
 main()
