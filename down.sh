@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 19:42:03
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:23:47
+ # @LastEditTime: 2022-12-12 20:25:52
  # @FilePath: /newifi3-nezha/down.sh
 ### 
 #!/bin/bash
@@ -37,8 +37,7 @@ chmod_nezha(){
     chmod +x /tmp/nezha-agent
 }
 # enable nezha-agent
-start_nezha()
-{
+start_nezha(){
     /etc/init.d/nezha-service enable && \
     /etc/init.d/nezha-service start 
     if [ $? -eq 0 ]; then
@@ -47,7 +46,6 @@ start_nezha()
         echo "nezha-agent start failed!"
         exit 1
     fi
-
 }
 # main function
 main(){
