@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 20:29:26
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:36:19
+ # @LastEditTime: 2022-12-12 20:38:07
  # @FilePath: /newifi3-nezha/1.sh
 ### 
 #!/bin/bash
@@ -23,7 +23,7 @@ donwload_file(){
         echo "down.sh download failed, please check your network!"
         exit 1
     fi
-    
+
     wget -P /etc/init.d https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-service
     
     if [ ! -f "/etc/init.d/nezha-service" ]; then
@@ -39,13 +39,16 @@ donwload_file(){
     fi
 }
 chmod_script(){
+    
     chmod +x /root/down.sh
+    
     if [ $? -eq 0 ]; then
         echo "down.sh chmod success!"
     else
         echo "down.sh chmod failed!"
         exit 1
     fi
+
     chmod +x /etc/init.d/nezha-service
 
     if [ $? -eq 0 ]; then
@@ -54,6 +57,7 @@ chmod_script(){
         echo "nezha-service service chmod failed!"
         exit 1
     fi
+
     chmod +x /tmp/nezha-agent
    
     if [ $? -eq 0 ]; then
