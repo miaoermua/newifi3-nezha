@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 19:42:03
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:22:24
+ # @LastEditTime: 2022-12-12 20:23:47
  # @FilePath: /newifi3-nezha/down.sh
 ### 
 #!/bin/bash
@@ -41,7 +41,6 @@ start_nezha()
 {
     /etc/init.d/nezha-service enable && \
     /etc/init.d/nezha-service start 
-    systemctl status nezha-service | grep "Active: active (running)" 
     if [ $? -eq 0 ]; then
         echo "nezha-agent start success!"
     else
