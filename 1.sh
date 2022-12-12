@@ -7,5 +7,5 @@ wget -P /tmp https://github.com/miaoermua/newifi3-nezha/raw/main/nezha-agent
 chmod +x /root/down.sh
 chmod +x /etc/init.d/nezha-service
 chmod +x /tmp/nezha-agent
-echo "部署完毕"
-vim /etc/init.d/nezha-service
+echo "部署完毕,为了安全已抹去隐私信息"
+vi /etc/init.d/nezha-service
