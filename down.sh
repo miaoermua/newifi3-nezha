@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 19:42:03
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:25:52
+ # @LastEditTime: 2022-12-13 19:45:45
  # @FilePath: /newifi3-nezha/down.sh
 ### 
 #!/bin/bash
@@ -50,17 +50,17 @@ start_nezha(){
 # main function
 main(){
     echo "start wifi module..."
-    start_wifi()
+    start_wifi
     sleep 1
     echo "download nezha-agent..."
-    download_nezha()
+    download_nezha
     sleep 1
     echo "chmod nezha-agent..."
-    chmod_nezha()
+    chmod_nezha
     sleep 1
     echo "start nezha-agent..."
-    start_nezha()
+    start_nezha
     sleep 2
     echo "Enjoy it!"
 }
-main()
+main
