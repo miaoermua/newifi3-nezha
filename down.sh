@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 19:42:03
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-13 19:45:45
+ # @LastEditTime: 2022-12-13 20:03:05
  # @FilePath: /newifi3-nezha/down.sh
 ### 
 #!/bin/bash
@@ -23,8 +23,16 @@ download_nezha(){
         echo "wget not found, install wget~"
         opkg update && opkg install wget
     fi
+
+    if [ ! -f "/tmp/nezha-agent" ]; then
+        echo "nezha-agent not found, download nezha-agent~"
+        wget -P /tmp  https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
+    else
+        echo "nezha-agent found, delete nezha-agent and download nezha-agent~"
+        rm -rf /tmp/nezha-agent
+        wget -P /tmp  https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
+    fi
     
-    wget -P /tmp  https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
 
     if [ ! -f "/tmp/nezha-agent" ]; then
         echo "nezha-agent download failed, please check your network!"
