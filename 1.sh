@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 20:29:26
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-13 19:45:32
+ # @LastEditTime: 2022-12-13 20:03:37
  # @FilePath: /newifi3-nezha/1.sh
 ### 
 #!/bin/bash
@@ -17,21 +17,43 @@ donwload_file(){
         opkg update && opkg install wget
     fi
 
-    wget -P /root https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/down.sh
+    if [ ! -f "/root/down.sh" ]; then
+        echo "down.sh not found, download down.sh~"
+        wget -P /root https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/down.sh
+    else
+        echo "down.sh found, delete down.sh and download down.sh~"
+        rm -rf /root/down.sh
+        wget -P /root https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/down.sh
+    fi
    
     if [ ! -f "/root/down.sh" ]; then
         echo "down.sh download failed, please check your network!"
         exit 1
     fi
 
-    wget -P /etc/init.d https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-service
+
+    if [ ! -f "/etc/init.d/nezha-service" ]; then
+        echo "nezha-service not found, download nezha-service~"
+        wget -P /etc/init.d https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-service
+    else
+        echo "nezha-service found, delete nezha-service and download nezha-service~"
+        rm -rf /etc/init.d/nezha-service
+        wget -P /etc/init.d https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-service
+    fi
     
     if [ ! -f "/etc/init.d/nezha-service" ]; then
         echo "nezha-service download failed, please check your network!"
         exit 1
     fi
 
-    wget -P /tmp https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
+    if [ ! -f "/tmp/nezha-agent" ]; then
+        echo "nezha-agent not found, download nezha-agent~"
+        wget -P /tmp https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
+    else
+        echo "nezha-agent found, delete nezha-agent and download nezha-agent~"
+        rm -rf /tmp/nezha-agent
+        wget -P /tmp https://fastly.jsdelivr.net/gh/miaoermua/newifi3-nezha@main/nezha-agent
+    fi
    
     if [ ! -f "/tmp/nezha-agent" ]; then
         echo "nezha-agent download failed, please check your network!"
