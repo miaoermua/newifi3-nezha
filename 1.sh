@@ -2,7 +2,7 @@
  # @Author: miaoermua
  # @Date: 2022-12-12 20:29:26
  # @LastEditors: ttimochan
- # @LastEditTime: 2022-12-12 20:38:07
+ # @LastEditTime: 2022-12-13 19:45:32
  # @FilePath: /newifi3-nezha/1.sh
 ### 
 #!/bin/bash
@@ -69,9 +69,9 @@ chmod_script(){
 }
 main(){   
     echo "开始部署"
-    donwload_file()
-    chmod_script()
+    donwload_file
+    chmod_script
     echo "部署完毕"
     vi /etc/init.d/nezha-service
 }
-main()
+main
